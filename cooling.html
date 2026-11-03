@@ -1,0 +1,808 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Cooling Analytics | OptiNexa AI</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background:
+                radial-gradient(circle at 5% 30%,
+                rgba(0, 255, 120, 0.14), transparent 25%),
+                radial-gradient(circle at 95% 75%,
+                rgba(0, 255, 174, 0.10), transparent 25%),
+                linear-gradient(135deg, #001923, #000b19, #001923);
+        }
+
+        .green {
+            color: #00ffae;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: #000b19;
+            border-bottom: 1px solid #075b4b;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ffae;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+            padding: 70px 7%;
+        }
+
+        .hero-text {
+            width: 50%;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #00a982;
+            border-radius: 25px;
+            color: #00ffae;
+            font-size: 12px;
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            color: #c5d6dc;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 13px 25px;
+            background: #00ffae;
+            color: #001923;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            /* background: white; */
+            box-shadow: 0 0 20px rgba(0, 255, 174, 0.4);
+        }
+
+        .hero-image {
+            width: 50%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 1px solid #087e65;
+            box-shadow: 0 0 25px rgba(0, 255, 174, 0.12);
+        }
+
+        /* COMMON SECTION HEADING */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading .small-title {
+            color: #00ffae;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .section-heading h2 {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p {
+            color: #c5d6dc;
+            line-height: 1.8;
+        }
+
+        /* FEATURES */
+        .features {
+            padding: 60px 7%;
+            background: rgba(0, 10, 25, 0.65);
+            border-top: 1px solid #075b4b;
+            border-bottom: 1px solid #075b4b;
+        }
+
+        .feature-container {
+            display: flex;
+            gap: 22px;
+        }
+
+        .feature-card {
+            flex: 1;
+            padding: 28px 22px;
+            border: 1px solid #075b65;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #00252c, #00101d);
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+            border-color: #00ffae;
+            box-shadow: 0 0 20px rgba(0, 255, 174, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 32px;
+            color: #00ffae;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            color: #c5d6dc;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* HOW IT WORKS */
+        .workflow {
+            padding: 65px 7%;
+        }
+
+        .workflow-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .workflow-card {
+            flex: 1;
+            text-align: center;
+            padding: 25px 18px;
+            border: 1px solid #075b65;
+            border-radius: 12px;
+            background: rgba(0, 30, 40, 0.65);
+            transition: 0.3s;
+        }
+
+        .workflow-card:hover {
+            border-color: #00ffae;
+            transform: translateY(-5px);
+        }
+
+        .workflow-card .number {
+            color: #00ffae;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .workflow-card i {
+            display: block;
+            font-size: 32px;
+            color: #00ffae;
+            margin: 20px 0;
+        }
+
+        .workflow-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .workflow-card p {
+            color: #c5d6dc;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* BENEFITS */
+        .benefits {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 60px 7%;
+            background: rgba(0, 255, 174, 0.04);
+            border-top: 1px solid #075b4b;
+        }
+
+        .benefit-text {
+            flex: 1;
+        }
+
+        .benefit-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .benefit-text p {
+            color: #c5d6dc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .benefit-list {
+            list-style: none;
+        }
+
+        .benefit-list li {
+            margin: 17px 0;
+            color: #d0e5e5;
+        }
+
+        .benefit-list i {
+            color: #00ffae;
+            margin-right: 12px;
+        }
+
+        .benefit-image {
+            flex: 1;
+        }
+
+        .benefit-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid #087e65;
+        }
+
+        /* CONTACT BANNER */
+        .contact-banner {
+            margin: 50px 7%;
+            padding: 35px;
+            text-align: center;
+            border: 1px solid #00a982;
+            border-radius: 14px;
+            background: linear-gradient(120deg, #00362d, #00101d);
+        }
+
+        .contact-banner h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .contact-banner p {
+            color: #c5d6dc;
+            line-height: 1.7;
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            padding: 60px 8%;
+            display: flex;
+            align-items: stretch;
+            gap: 40px;
+            background:
+                radial-gradient(circle at 50% 50%,
+                rgba(0, 255, 120, 0.15), transparent 35%),
+                #000b19;
+        }
+
+        .contact,
+        .form {
+            flex: 1;
+            min-width: 0;
+            padding: 32px;
+            border: 1px solid #064b43;
+            border-radius: 12px;
+            background: rgba(0, 27, 34, 0.75);
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .contact h1,
+        .form h1 {
+            color: #00ffae;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .contact p,
+        .form p {
+            color: #c5d6dc;
+            line-height: 1.7;
+        }
+
+        .contact a,
+        .footer-contact a {
+            color: #c5d6dc;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+
+        .contact a:hover,
+        .footer-links a:hover,
+        .footer-contact a:hover {
+            color: #00ffae;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #267568;
+            border-radius: 6px;
+            background: #001923;
+            color: white;
+            font: inherit;
+        }
+
+        form textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            outline: 2px solid #00ffae;
+            outline-offset: 1px;
+        }
+
+        form button {
+            align-self: flex-start;
+            padding: 12px 22px;
+            border: 0;
+            border-radius: 25px;
+            background: #00ffae;
+            color: #001b22;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 40px 8% 20px;
+            background: #000710;
+            color: #b8cccc;
+            border-top: 1px solid #075b4b;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin: 0 120px 0 80px;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .footer-brand,
+        .footer-links,
+        .footer-contact {
+            background: rgba(0, 27, 34, 0.75);
+            border: 1px solid #1c042c;
+            border-radius: 12px;
+            padding: 22px 20px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo img {
+            width: 52px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .footer-logo h3 {
+            font-size: 18px;
+            color: white;
+        }
+
+        .footer-brand p,
+        .footer-links a,
+        .footer-contact p {
+            color: #c5d6dc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: #00ffae;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 24px;
+            margin-top: 20px;
+            border-top: 1px solid #064b43;
+            color: #d6e6e8;
+        }
+
+        .copyright a {
+            text-decoration: none;
+            color: #c5d6dc;
+        }
+       
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            OptiNexa <span class="green">AI</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Solutions</a></li>
+            <li><a href="#Contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <span class="tag">
+                <i class="fa-solid fa-snowflake"></i>
+                INTELLIGENT COOLING TECHNOLOGY
+            </span>
+
+            <h1>
+                Smart Cooling Analytics for a
+                <span class="green">Cooler Future</span>
+            </h1>
+
+            <p>
+                Monitor temperatures, understand cooling patterns
+                and identify opportunities to improve data centre
+                cooling efficiency with intelligent analytics.
+            </p>
+
+            <a href="#features" class="btn">
+                Explore Features 
+            </a>
+
+        </div>
+
+        <div class="hero-image">
+
+            <img src="images/Spic2.jpg"
+                 alt="Smart cooling system in a data centre">
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES SECTION -->
+    <section class="features" id="features">
+
+        <div class="section-heading">
+
+            <p class="small-title">OUR CAPABILITIES</p>
+
+            <h2>
+                Intelligent <span class="green">Cooling Solutions</span>
+            </h2>
+
+            <p>
+                Improve cooling visibility and make informed
+                decisions for your data centre.
+            </p>
+
+        </div>
+
+        <div class="feature-container">
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-temperature-half"></i>
+
+                <h3>Temperature Monitoring</h3>
+
+                <p>
+                    Monitor temperature readings and identify
+                    areas that may require cooling adjustments.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <h3>Cooling Analytics</h3>
+
+                <p>
+                    Analyze cooling patterns to understand
+                    performance and improve system efficiency.
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-fan"></i>
+
+                <h3>Heat Management</h3>
+
+                <p>
+                    Identify potential hot spots and support
+                    better cooling and airflow management.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section class="workflow">
+
+        <div class="section-heading">
+
+            <p class="small-title">HOW IT WORKS</p>
+
+            <h2>
+                From Heat Data to
+                <span class="green">Smart Decisions</span>
+            </h2>
+
+        </div>
+
+        <div class="workflow-container">
+
+            <div class="workflow-card">
+
+                <span class="number">STEP 01</span>
+
+                <i class="fa-solid fa-temperature-half"></i>
+
+                <h3>Collect</h3>
+
+                <p>
+                    Gather temperature and cooling system data.
+                </p>
+
+            </div>
+
+            <div class="workflow-card">
+
+                <span class="number">STEP 02</span>
+
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+
+                <h3>Analyze</h3>
+
+                <p>
+                    Review readings and identify cooling patterns.
+                </p>
+
+            </div>
+
+            <div class="workflow-card">
+
+                <span class="number">STEP 03</span>
+
+                <i class="fa-solid fa-gears"></i>
+
+                <h3>Optimize</h3>
+
+                <p>
+                    Find opportunities to improve cooling efficiency.
+                </p>
+
+            </div>
+
+            <div class="workflow-card">
+
+                <span class="number">STEP 04</span>
+
+                <i class="fa-solid fa-leaf"></i>
+
+                <h3>Improve</h3>
+
+                <p>
+                    Track results and support sustainability goals.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BENEFITS SECTION -->
+    <section class="benefits">
+
+ <div class="benefit-image">
+
+            <img src="images/cspic1.jpg"
+                 alt="Cooling equipment for server infrastructure">
+
+        </div>
+
+        <div class="benefit-text">
+
+            <h2>
+                Why Choose <span class="green">Smart Cooling?</span>
+            </h2>
+
+            <p>
+                Effective cooling management helps data centres
+                maintain suitable operating conditions while
+                making better use of cooling resources.
+            </p>
+
+            <ul class="benefit-list">
+
+                <li>
+                    <i class="fas fa-circle-check"></i>
+                    Better visibility into temperature patterns
+                </li>
+
+                <li>
+                    <i class="fas fa-circle-check"></i>
+                    Early identification of potential hot spots
+                </li>
+
+                <li>
+                    <i class="fas fa-circle-check"></i>
+                    Improved cooling performance analysis
+                </li>
+
+                <li>
+                    <i class="fas fa-circle-check"></i>
+                    Support for energy-efficient operations
+                </li>
+
+            </ul>
+
+        </div>
+
+       
+
+    </section>
+
+
+    
+
+
+    <section id="Contact" class="contact-section">
+        <div class="contact">
+            <h1>Contact Us</h1>
+            <p>Have questions or want to know more? Reach out to us!</p>
+            <p><a href="tel:+919468609956"><i class="fas fa-phone" aria-hidden="true"></i> +91 9468609956</a></p>
+            <p><a href="mailto:poojakhandelwal1694@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> poojakhandelwal1694@gmail.com</a></p>
+        </div>
+
+        <div class="form">
+            <form action="contact.html" method="get">
+                <h1>Send us a message</h1>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="OptiNexa AI Logo">
+                    <h3>OptiNexa <span class="green">AI</span></h3>
+                </div>
+                <p>OptiNexa AI delivers intelligent software solutions for smarter, cooler and more sustainable data centres.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4 align="center">Quick Links</h4>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#Contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><a href="tel:+919468609956"><i class="fas fa-phone" aria-hidden="true"></i> +91 9468609956</a></p>
+                <p><a href="mailto:poojakhandelwal1694@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> poojakhandelwal1694@gmail.com</a></p>
+                <p><a href="https://github.com/PoojaKhandelwal1694"><i class="fab fa-github" aria-hidden="true"></i> Poojakhandelwal1694</a></p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2026 OptiNexa AI. All rights reserved by OptiNexa AI. | POOJA KHANDELWAL | <a href="https://www.dezyneecole.com/">Dezyne École College.</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
