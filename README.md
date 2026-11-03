@@ -10,7 +10,7 @@ The project aims to improve data centre efficiency by providing intelligent solu
 
 OptiNexa AI focuses on reducing unnecessary energy consumption, improving resource utilization, and supporting environmentally friendly digital infrastructure.
 
-## 🎯 Objectives
+## Objectives
 
 - Promote sustainable and energy-efficient data centres.
 - Monitor and analyze energy consumption patterns.
@@ -93,10 +93,3 @@ Open the folder in Visual Studio Code.
 Open `index.html` in your browser.
 
 Alternatively, use the Live Server extension in Visual Studio Code for a better development experience.
-
-
-
-
-⭐ If you find this project interesting, don't forget to star the repository!
-
-### Building a Smarter, Greener, and More Sustainable Digital Future with OptiNexa AI. 🌱
